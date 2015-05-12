@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">DeKikkersprong</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_tweede_scherm">TweedeScherm</string>
+    <string name="title_activity_simple_scanner">SimpleScannerActivity</string>
+
+    <string name="title_activity_main">MainMenu</string>
+
+</resources>
