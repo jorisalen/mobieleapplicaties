@@ -1,31 +1,34 @@
 package com.example.vasq.dekikkersprong;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
 import com.example.vasq.dekikkersprong.src.facade.Facade;
 
-import java.util.HashMap;
 
-
-public class MainMenu extends Activity {
+public class Register extends Activity {
     private Facade facade = Facade.getInstance();
+    private EditText naam, voornaam;
+    private Button register;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_menu);
-
+        setContentView(R.layout.activity_register);
+        naam = (EditText) findViewById(R.id.naam);
+        voornaam = (EditText) findViewById(R.id.voornaam);
+        register = (Button) findViewById(R.id.register);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main_menu, menu);
+        getMenuInflater().inflate(R.menu.menu_register, menu);
         return true;
     }
 
@@ -43,21 +46,10 @@ public class MainMenu extends Activity {
 
         return super.onOptionsItemSelected(item);
     }
-    public void toonOverzicht(View view){
-        HashMap<String, String> kinderen = facade.toonOverzicht();
-        Intent intent = new Intent(this,TweedeScherm.class);
-        intent.putExtra("kinderen",kinderen);
-        startActivity(intent);
-    }
 
-    public void klokIn(View view){
-        Intent intent = new Intent(this,SimpleScannerActivity.class);
-        intent.putExtra("functie", "klokin");
-        startActivity(intent);
-    }
+    private void registreer(View view){
 
-    public void registreerKind(View view){
-        Intent intent = new Intent(this, Register.class);
-        startActivity(intent);
+        facade.addKind(this.naam.getText().toString() ,this.voornaam.getText().toString(),1);
+
     }
 }

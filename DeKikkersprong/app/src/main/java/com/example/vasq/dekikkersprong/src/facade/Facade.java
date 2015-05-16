@@ -18,7 +18,7 @@ public class Facade {
 
     private Facade() {
         databank = new GeheugenDatabase();
-
+        kindManager = new KindManager();
     }
 
     public static Facade getInstance(){
@@ -28,12 +28,16 @@ public class Facade {
         return instance;
     }
 
-    public String kloklIn(int kindId, Date date){
-		return kindManager.klokIn(kindId, date);
+    public String klokIn(int kindId){
+		return kindManager.klokIn(kindId);
 	}
+
+    public void addKind(String naam, String voornaam, int kindId){
+         kindManager.addKind(naam,voornaam,kindId);
+    }
 	
-	public String kloklUit(int kindId, Date date){
-		return kindManager.klokUit(kindId, date);
+	public String klokUit(int kindId){
+		return kindManager.klokUit(kindId);
 	}
 
     public HashMap<String, String> toonOverzicht() {

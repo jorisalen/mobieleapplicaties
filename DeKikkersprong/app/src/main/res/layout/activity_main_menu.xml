@@ -19,7 +19,7 @@
             android:layout_height="fill_parent">
 
             <Button
-                android:layout_width="210dp"
+                android:layout_width="224dp"
                 android:layout_height="wrap_content"
                 android:text="Klok in"
                 android:id="@+id/klokIn"
@@ -28,26 +28,34 @@
                 android:onClick="klokIn"/>
 
             <Button
-                android:layout_width="220dp"
+                android:layout_width="240dp"
                 android:layout_height="wrap_content"
                 android:text="Klok uit"
                 android:id="@+id/klokuit"
                 android:layout_gravity="center_horizontal" />
 
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="241dp"
                 android:layout_height="wrap_content"
                 android:text="Openstaande rekeningen"
                 android:id="@+id/button3"
                 android:layout_gravity="center_horizontal" />
 
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="237dp"
                 android:layout_height="wrap_content"
                 android:text="Overzicht aanwezigheden"
                 android:id="@+id/overzichtAanwezig"
                 android:layout_gravity="center_horizontal"
                 android:onClick="toonOverzicht"/>
+
+            <Button
+                android:layout_width="237dp"
+                android:layout_height="wrap_content"
+                android:text="Registreer kind"
+                android:id="@+id/button"
+                android:layout_gravity="center_horizontal"
+                android:onClick="registreerKind"/>
         </LinearLayout>
     </LinearLayout>
 

@@ -1,31 +1,29 @@
 package com.example.vasq.dekikkersprong;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
+import android.widget.Toast;
 
 import com.example.vasq.dekikkersprong.src.facade.Facade;
 
-import java.util.HashMap;
 
-
-public class MainMenu extends Activity {
+public class Handling extends Activity {
     private Facade facade = Facade.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_menu);
-
+        setContentView(R.layout.activity_handling);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main_menu, menu);
+        getMenuInflater().inflate(R.menu.menu_handling, menu);
         return true;
     }
 
@@ -43,21 +41,9 @@ public class MainMenu extends Activity {
 
         return super.onOptionsItemSelected(item);
     }
-    public void toonOverzicht(View view){
-        HashMap<String, String> kinderen = facade.toonOverzicht();
-        Intent intent = new Intent(this,TweedeScherm.class);
-        intent.putExtra("kinderen",kinderen);
+    private void goToMainMenu(){
+        Intent intent = new Intent(this, MainMenu.class);
         startActivity(intent);
     }
 
-    public void klokIn(View view){
-        Intent intent = new Intent(this,SimpleScannerActivity.class);
-        intent.putExtra("functie", "klokin");
-        startActivity(intent);
-    }
-
-    public void registreerKind(View view){
-        Intent intent = new Intent(this, Register.class);
-        startActivity(intent);
-    }
 }

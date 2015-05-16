@@ -7,26 +7,29 @@ public class KindManager {
 	private ArrayList<Kind> kinderen;
 	
 	
-	
 	public KindManager() {
 		this.kinderen = new ArrayList<Kind>();
 	}
 
-	public String klokIn(int kindId, Date datum){
+	public String klokIn(int kindId){
 		if (!kinderen.get(kindId).isAanwezig()){
 			kinderen.get(kindId).setAanwezig(true);
 		}
 		return "Welkom, " + kinderen.get(kindId).getVoornaam() + "!";
 	}
 	
-	public String klokUit(int kindId, Date datum){
+	public String klokUit(int kindId){
 		if (kinderen.get(kindId).isAanwezig()){
 			kinderen.get(kindId).setAanwezig(false);
 		}
 		return "Fijne avond, " + kinderen.get(kindId).getVoornaam() + "!";
 		
 	}
-	
+
+    public void addKind(String naam, String voornaam, int kindId){
+        kinderen.add(kindId, new Kind(naam,voornaam,kindId));
+    }
+
 	public Kind getKind(int kindId){
 		for (Kind e : kinderen){
 			if(e.getId()== kindId){

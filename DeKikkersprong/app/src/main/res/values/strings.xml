@@ -7,5 +7,7 @@
     <string name="title_activity_simple_scanner">SimpleScannerActivity</string>
 
     <string name="title_activity_main">MainMenu</string>
+    <string name="title_activity_handling">Handling</string>
+    <string name="title_activity_register">Register</string>
 
 </resources>

@@ -9,9 +9,9 @@ public class GeheugenDatabase implements Database{
     HashMap<String,String> kinderen = new HashMap<>();
 
     public GeheugenDatabase() {
-        kinderen.put("Key1","Wouter");
-        kinderen.put("Key2","Joris");
-        kinderen.put("Key3","Boeber");
+        kinderen.put("1","Wouter");
+        kinderen.put("2","Joris");
+        kinderen.put("3","Boeber");
     }
 
     @Override
