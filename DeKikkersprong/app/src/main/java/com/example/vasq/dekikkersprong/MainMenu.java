@@ -45,7 +45,7 @@ public class MainMenu extends Activity {
     }
     public void toonOverzicht(View view){
         HashMap<String, String> kinderen = facade.toonOverzicht();
-        Intent intent = new Intent(this,TweedeScherm.class);
+        Intent intent = new Intent(this,Overzicht.class);
         intent.putExtra("kinderen",kinderen);
         startActivity(intent);
     }
@@ -53,6 +53,17 @@ public class MainMenu extends Activity {
     public void klokIn(View view){
         Intent intent = new Intent(this,SimpleScannerActivity.class);
         intent.putExtra("functie", "klokin");
+        startActivity(intent);
+    }
+    public void klokUit(View view){
+        Intent intent = new Intent(this,SimpleScannerActivity.class);
+        intent.putExtra("functie", "klokuit");
+        startActivity(intent);
+    }
+
+    public void genereerFactuur(View v){
+        Intent intent = new Intent(this,SimpleScannerActivity.class);
+        intent.putExtra("functie", "factuur");
         startActivity(intent);
     }
 

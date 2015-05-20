@@ -45,6 +45,8 @@ public class Kind {
 		this.isAanwezig = isAanwezig;
 	}
 	
-	
+	public String toString(){
+        return this.getNaam() + this.getVoornaam() + this.getId() + this.isAanwezig();
+    }
 	
 }

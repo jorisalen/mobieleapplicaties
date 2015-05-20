@@ -32,14 +32,24 @@
                 android:layout_height="wrap_content"
                 android:text="Klok uit"
                 android:id="@+id/klokuit"
-                android:layout_gravity="center_horizontal" />
+                android:layout_gravity="center_horizontal"
+                android:onClick="klokUit"/>
 
             <Button
                 android:layout_width="241dp"
                 android:layout_height="wrap_content"
                 android:text="Openstaande rekeningen"
                 android:id="@+id/button3"
-                android:layout_gravity="center_horizontal" />
+                android:layout_gravity="center_horizontal"
+                android:onClick="genereerFactuur"/>
+
+            <Button
+                android:layout_width="241dp"
+                android:layout_height="wrap_content"
+                android:text="Genereer factuur*"
+                android:id="@+id/genereerFactuur"
+                android:layout_gravity="center_horizontal"
+                android:onClick="genereerFactuur"/>
 
             <Button
                 android:layout_width="237dp"

@@ -22,7 +22,7 @@
         <uses-permission android:name="android.permission.CAMERA" />
 
         <activity
-            android:name=".TweedeScherm"
+            android:name=".Overzicht"
             android:label="@string/title_activity_tweede_scherm" >
         </activity>
         <activity
@@ -32,10 +32,6 @@
         <activity
             android:name=".src.MainActivity"
             android:label="@string/title_activity_main" >
-        </activity>
-        <activity
-            android:name=".Handling"
-            android:label="@string/title_activity_handling" >
         </activity>
         <activity
             android:name=".Register"

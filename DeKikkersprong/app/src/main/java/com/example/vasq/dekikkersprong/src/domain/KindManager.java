@@ -2,20 +2,28 @@ package com.example.vasq.dekikkersprong.src.domain;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 public class KindManager {
-	private ArrayList<Kind> kinderen;
+	private HashMap<Integer, Kind> kinderen;
 	
 	
 	public KindManager() {
-		this.kinderen = new ArrayList<Kind>();
+
+        this.kinderen = new HashMap<Integer,Kind>();
+        kinderen.put(1, new Kind("Deboutte", "Bob", 1));
 	}
 
 	public String klokIn(int kindId){
 		if (!kinderen.get(kindId).isAanwezig()){
 			kinderen.get(kindId).setAanwezig(true);
-		}
-		return "Welkom, " + kinderen.get(kindId).getVoornaam() + "!";
+            return "Welkom, " + kinderen.get(kindId).getVoornaam() +"!";
+		}else{
+            return "Kind is al aanwezig !";
+        }
+
 	}
 	
 	public String klokUit(int kindId){
@@ -27,35 +35,19 @@ public class KindManager {
 	}
 
     public void addKind(String naam, String voornaam, int kindId){
-        kinderen.add(kindId, new Kind(naam,voornaam,kindId));
+        kinderen.put(kindId, new Kind(naam, voornaam, kindId));
     }
 
 	public Kind getKind(int kindId){
-		for (Kind e : kinderen){
-			if(e.getId()== kindId){
-				return e;
-			}
-		}
-		return null;
+		try{
+            return kinderen.get(kindId);
+        }finally{
+            return null;
+        }
+
 	}
 	
-	public ArrayList<Kind> aanwezigheden(){
-		ArrayList<Kind> aanwezig = new ArrayList<Kind>();
-		for (Kind e : kinderen){
-			if(e.isAanwezig()){
-				aanwezig.add(e);
-			}
-		}
-		return aanwezig;
-	}
-	
-	public ArrayList<Kind> afwezigheden(){
-		ArrayList<Kind> afwezig = new ArrayList<Kind>();
-		for (Kind e : kinderen){
-			if(!e.isAanwezig()){
-				afwezig.add(e);
-			}
-		}
-		return afwezig;
+	public HashMap<Integer,Kind> aanwezigheden(){
+        return kinderen;
 	}
 }
