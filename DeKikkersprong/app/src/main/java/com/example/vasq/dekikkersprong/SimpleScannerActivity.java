@@ -49,8 +49,19 @@ public class SimpleScannerActivity extends Activity implements ZXingScannerView.
         String kindId = stream.next();
         String naam = stream.next();
         if(getIntent().getExtras().get("functie").equals("klokin")){
-            Toast toast = Toast.makeText(context,facade.klokIn(Integer.parseInt(kindId)),duration);
-            toast.show();
+            String welkom = getString(R.string.welkom) + " " +  naam;
+            boolean succes = facade.klokIn(Integer.parseInt(kindId));
+
+            if(succes){
+                Toast toast = Toast.makeText(context,welkom ,duration);
+                toast.show();
+
+            } else {
+                Toast toast = Toast.makeText(context,naam + " " + getString(R.string.nietWelkom)  ,duration);
+                toast.show();
+
+            }
+
         } else if (getIntent().getExtras().get("functie").equals("klokuit")){
             Toast toast = Toast.makeText(context,facade.klokUit(Integer.parseInt(kindId)),duration);
             toast.show();

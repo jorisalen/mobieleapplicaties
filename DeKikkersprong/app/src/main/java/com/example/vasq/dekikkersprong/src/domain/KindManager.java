@@ -16,16 +16,16 @@ public class KindManager {
         kinderen.put(1, new Kind("Deboutte", "Bob", 1));
 	}
 
-	public String klokIn(int kindId){
+	public boolean klokIn(int kindId){
 		if (!kinderen.get(kindId).isAanwezig()){
 			kinderen.get(kindId).setAanwezig(true);
-            return "Welkom, " + kinderen.get(kindId).getVoornaam() +"!";
+            return true;
 		}else{
-            return "Kind is al aanwezig !";
+            return false;
         }
 
 	}
-	
+	// TODO veranderen naar booleans en de text dan afhandelen in de activities
 	public String klokUit(int kindId){
 		if (kinderen.get(kindId).isAanwezig()){
 			kinderen.get(kindId).setAanwezig(false);

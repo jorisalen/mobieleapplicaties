@@ -9,5 +9,6 @@
     <string name="title_activity_main">MainMenu</string>
     <string name="title_activity_handling">Handling</string>
     <string name="title_activity_register">Register</string>
-
+    <string name="welkom">Welkom</string>
+    <string name="nietWelkom">is al aanwezig</string>
 </resources>

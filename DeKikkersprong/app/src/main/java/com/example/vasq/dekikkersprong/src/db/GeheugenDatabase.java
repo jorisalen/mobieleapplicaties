@@ -18,4 +18,9 @@ public class GeheugenDatabase implements Database{
     public HashMap<String, String> toonOverzicht() {
         return kinderen;
     }
+
+    @Override
+    public boolean isConnected() {
+        return true;
+    }
 }

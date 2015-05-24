@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 import com.example.vasq.dekikkersprong.src.db.Database;
 import com.example.vasq.dekikkersprong.src.db.GeheugenDatabase;
+import com.example.vasq.dekikkersprong.src.db.PostgresqlDb;
 import com.example.vasq.dekikkersprong.src.domain.Kind;
 import com.example.vasq.dekikkersprong.src.domain.KindManager;
 import com.example.vasq.dekikkersprong.src.domain.RekeningManager;
@@ -17,18 +18,21 @@ public class Facade {
         private Database databank;
 
     private Facade() {
-        databank = new GeheugenDatabase();
+        databank = new PostgresqlDb();
         kindManager = new KindManager();
     }
 
+    public boolean isConnected(){
+        return databank.isConnected();
+    }
     public static Facade getInstance(){
         if (instance == null){
-            return new Facade();
+            instance = new Facade();
         }
         return instance;
     }
 
-    public String klokIn(int kindId){
+    public boolean klokIn(int kindId){
 		return kindManager.klokIn(kindId);
 	}
 
@@ -43,6 +47,7 @@ public class Facade {
     public HashMap<String, String> toonOverzicht() {
         return databank.toonOverzicht();
     }
+
 	//Returnt overzicht van verblijfuren
 	public HashMap<Integer, Integer> verblijfOverzicht(int kindId){
 		return rekeningManager.getOverzichtVoorKind(kindId);

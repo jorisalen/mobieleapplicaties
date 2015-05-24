@@ -9,6 +9,6 @@ public interface Database {
 
 
     public HashMap<String, String> toonOverzicht();
-
+    public boolean isConnected();
 
 }

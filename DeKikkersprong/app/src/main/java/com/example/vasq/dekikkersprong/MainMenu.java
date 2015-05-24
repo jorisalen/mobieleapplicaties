@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.vasq.dekikkersprong.src.facade.Facade;
 
@@ -19,6 +20,8 @@ public class MainMenu extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
 
+       // Toast toast = Toast.makeText(getApplicationContext(),facade.isConnected() + "" ,Toast.LENGTH_LONG);
+        //toast.show();
     }
 
 
