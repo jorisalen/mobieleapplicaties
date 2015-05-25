@@ -4,11 +4,11 @@ import java.util.Date;
 import java.util.HashMap;
 
 import com.example.vasq.dekikkersprong.src.db.Database;
-import com.example.vasq.dekikkersprong.src.db.GeheugenDatabase;
 import com.example.vasq.dekikkersprong.src.db.PostgresqlDb;
 import com.example.vasq.dekikkersprong.src.domain.Kind;
 import com.example.vasq.dekikkersprong.src.domain.KindManager;
 import com.example.vasq.dekikkersprong.src.domain.RekeningManager;
+import com.example.vasq.dekikkersprong.src.domain.Verblijf;
 
 public class Facade {
 
@@ -20,10 +20,11 @@ public class Facade {
     private Facade() {
         databank = new PostgresqlDb();
         kindManager = new KindManager();
+
     }
 
-    public boolean isConnected(){
-        return databank.isConnected();
+    public String isConnected(){
+        return databank.isConnected().toString();
     }
     public static Facade getInstance(){
         if (instance == null){
@@ -33,19 +34,19 @@ public class Facade {
     }
 
     public boolean klokIn(int kindId){
-		return kindManager.klokIn(kindId);
+		return databank.klokIn(kindId);
 	}
 
     public void addKind(String naam, String voornaam, int kindId){
          kindManager.addKind(naam,voornaam,kindId);
     }
 	
-	public String klokUit(int kindId){
-		return kindManager.klokUit(kindId);
+	public boolean klokUit(int kindId){
+		return databank.klokUit(kindId);
 	}
 
-    public HashMap<String, String> toonOverzicht() {
-        return databank.toonOverzicht();
+    public HashMap<String, Verblijf> toonOverzicht(int kindId) {
+        return databank.toonOverzicht(kindId);
     }
 
 	//Returnt overzicht van verblijfuren

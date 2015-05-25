@@ -20,8 +20,6 @@ public class MainMenu extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
 
-       // Toast toast = Toast.makeText(getApplicationContext(),facade.isConnected() + "" ,Toast.LENGTH_LONG);
-        //toast.show();
     }
 
 
@@ -47,9 +45,8 @@ public class MainMenu extends Activity {
         return super.onOptionsItemSelected(item);
     }
     public void toonOverzicht(View view){
-        HashMap<String, String> kinderen = facade.toonOverzicht();
-        Intent intent = new Intent(this,Overzicht.class);
-        intent.putExtra("kinderen",kinderen);
+        Intent intent = new Intent(this,SimpleScannerActivity.class);
+        intent.putExtra("functie","overzichtAanwezigheden");
         startActivity(intent);
     }
 
@@ -65,7 +62,7 @@ public class MainMenu extends Activity {
     }
 
     public void genereerFactuur(View v){
-        Intent intent = new Intent(this,SimpleScannerActivity.class);
+        Intent intent = new Intent(this,DropBoxActivity.class);
         intent.putExtra("functie", "factuur");
         startActivity(intent);
     }

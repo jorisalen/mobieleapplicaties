@@ -8,17 +8,18 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.vasq.dekikkersprong.src.MyAdaptor;
+import com.example.vasq.dekikkersprong.src.domain.Verblijf;
 
 import java.util.HashMap;
 
 
 public class Overzicht extends Activity {
-    private HashMap<String,String> kinderen;
+    private HashMap<String,Verblijf> kinderen;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tweede_scherm);
-        kinderen = (HashMap<String,String>) getIntent().getExtras().get("kinderen");
+        kinderen = (HashMap<String, Verblijf>) getIntent().getExtras().get("overzicht");
 
         ListView listviewKinderen =(ListView)findViewById(R.id.listviewKinderen);
         MyAdaptor adaptor = new MyAdaptor(kinderen);

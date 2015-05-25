@@ -7,15 +7,17 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.vasq.dekikkersprong.R;
+import com.example.vasq.dekikkersprong.src.domain.Verblijf;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 public class MyAdaptor extends BaseAdapter {
     private final ArrayList mData;
 
 
-    public MyAdaptor(Map<String, String> map) {
+    public MyAdaptor(HashMap<String, Verblijf> map) {
         mData = new ArrayList();
         mData.addAll(map.entrySet());
     }

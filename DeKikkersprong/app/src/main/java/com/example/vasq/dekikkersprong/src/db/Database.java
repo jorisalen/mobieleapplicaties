@@ -1,5 +1,7 @@
 package com.example.vasq.dekikkersprong.src.db;
 
+import com.example.vasq.dekikkersprong.src.domain.Verblijf;
+
 import java.util.HashMap;
 
 /**
@@ -8,7 +10,9 @@ import java.util.HashMap;
 public interface Database {
 
 
-    public HashMap<String, String> toonOverzicht();
-    public boolean isConnected();
+    public HashMap<String, Verblijf> toonOverzicht(int kindId);
+    public String isConnected();
 
+    public boolean klokIn(int kindId);
+    public boolean klokUit(int kindId);
 }

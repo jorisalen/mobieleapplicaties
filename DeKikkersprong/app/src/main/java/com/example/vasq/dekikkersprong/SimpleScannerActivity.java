@@ -48,6 +48,7 @@ public class SimpleScannerActivity extends Activity implements ZXingScannerView.
         stream.useDelimiter(";");
         String kindId = stream.next();
         String naam = stream.next();
+        Intent intent = new Intent(this, MainMenu.class);
         if(getIntent().getExtras().get("functie").equals("klokin")){
             String welkom = getString(R.string.welkom) + " " +  naam;
             boolean succes = facade.klokIn(Integer.parseInt(kindId));
@@ -63,8 +64,18 @@ public class SimpleScannerActivity extends Activity implements ZXingScannerView.
             }
 
         } else if (getIntent().getExtras().get("functie").equals("klokuit")){
-            Toast toast = Toast.makeText(context,facade.klokUit(Integer.parseInt(kindId)),duration);
-            toast.show();
+            String dag = getString(R.string.dag) + " " +  naam;
+            boolean succes = facade.klokUit(Integer.parseInt(kindId));
+
+            if(succes){
+                Toast toast = Toast.makeText(context,dag ,duration);
+                toast.show();
+
+            } else {
+                Toast toast = Toast.makeText(context,naam + " " + getString(R.string.alUit)  ,duration);
+                toast.show();
+
+            }
         } else if (getIntent().getExtras().get("functie").equals("factuur")){
             if (Integer.parseInt(kindId) < 0){
                 Toast toast = Toast.makeText(context,"Genereren",duration);
@@ -73,9 +84,11 @@ public class SimpleScannerActivity extends Activity implements ZXingScannerView.
                 Toast toast = Toast.makeText(context,"Je hebt de machtigingen niet !",duration);
                 toast.show();
             }
+        } else if (getIntent().getExtras().get("functie").equals("overzichtAanwezigheden")){
+            intent = new Intent(this,Overzicht.class);
+            intent.putExtra("overzicht",facade.toonOverzicht(Integer.parseInt(kindId)));
         }
         stream.close();
-        Intent intent = new Intent(this,MainMenu.class);
         startActivity(intent);
     }
 }

@@ -1,5 +1,6 @@
 package com.example.vasq.dekikkersprong.src.domain;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -54,8 +55,8 @@ public class Rekening {
 		this.kindId = kindId;
 	}
 	
-	public void addVerblijf(String info, Date datum, int tijd, int rekeningId){
-		Verblijf verblijf = new Verblijf(info, datum, tijd, rekeningId);
+	public void addVerblijf(int kindId, Timestamp tijdIn, Timestamp tijdUit){
+		Verblijf verblijf = new Verblijf(kindId,tijdIn,tijdUit);
 			
 		verblijven.add(verblijf);
 		
