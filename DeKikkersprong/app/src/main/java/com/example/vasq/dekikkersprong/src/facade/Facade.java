@@ -48,14 +48,5 @@ public class Facade {
     public HashMap<String, Verblijf> toonOverzicht(int kindId) {
         return databank.toonOverzicht(kindId);
     }
-
-	//Returnt overzicht van verblijfuren
-	public HashMap<Integer, Integer> verblijfOverzicht(int kindId){
-		return rekeningManager.getOverzichtVoorKind(kindId);
-	}
-	//Returnt overzicht van bedragen
-	public HashMap<String, Integer> rekeningOverzicht(int kindId){
-		return rekeningManager.getVerblijfsOverzicht(kindId);
-	}
 	
 }

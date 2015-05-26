@@ -2,12 +2,11 @@ package com.example.vasq.dekikkersprong.src.domain;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 
 public class Rekening {
 	private double totaalBedrag, betaaldBedrag;
-	private boolean betaald;
+	private boolean isBetaald;
 	private int id,kindId;
 	private ArrayList<Verblijf> verblijven;
 	
@@ -37,10 +36,10 @@ public class Rekening {
 		this.betaaldBedrag = betaaldBedrag;
 	}
 	public boolean isBetaald() {
-		return betaald;
+		return isBetaald;
 	}
 	public void setBetaald(boolean betaald) {
-		this.betaald = betaald;
+		this.isBetaald = betaald;
 	}
 	public int getId() {
 		return id;
@@ -57,15 +56,16 @@ public class Rekening {
 	
 	public void addVerblijf(int kindId, Timestamp tijdIn, Timestamp tijdUit){
 		Verblijf verblijf = new Verblijf(kindId,tijdIn,tijdUit);
-			
 		verblijven.add(verblijf);
-		
-		
 	}
 	
-	public  HashMap<Integer, Integer> getOverzicht(){
-		return null;
-		
+	public  ArrayList<Integer> getOpenstaandeFacturen(){
+		int prijs = 5;
+		ArrayList<Integer> factuur = new ArrayList<Integer>();
+		for (Verblijf e : verblijven){
+			factuur.set(e.getMaand(), (int) (factuur.get(e.getMaand()) + e.getTijd() * prijs));
+		}
+		return factuur;
 	}
 	
 }

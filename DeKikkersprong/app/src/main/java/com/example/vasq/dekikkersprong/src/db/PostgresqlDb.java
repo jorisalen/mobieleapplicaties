@@ -50,14 +50,14 @@ public class PostgresqlDb implements Database {
     public boolean klokIn(int kindId) {
         boolean ok = false;
             try {
-                PreparedStatement klokIn = dbConnection
-                        .prepareStatement("INSERT INTO verblijven (kindId, tijdin, tijduit) VALUES(1,now(), null);");
-                klokIn.setInt(1, kindId);
-                klokIn.executeUpdate();
-                klokIn.close();
-                ok = true;
+                String sql = "INSERT INTO verblijven (kindId, tijdin, tijduit) VALUES(?,now(), null);";
+                PreparedStatement statement = dbConnection.prepareStatement(sql);
+                statement.setInt(1, kindId);
+                ok = statement.execute();
+                dbConnection.commit();
 
             } catch (SQLException e) {
+                e.printStackTrace();
             }
             return ok;
 
@@ -66,12 +66,12 @@ public class PostgresqlDb implements Database {
     public boolean klokUit(int kindId) {
         boolean ok = false;
         try {
-            PreparedStatement klokUit = dbConnection
-                    .prepareStatement("update verblijven set tijduit = now() WHERE kindId = ? and tijduit is null;");
-            klokUit.setInt(1, kindId);
-            klokUit.executeUpdate();
-            klokUit.close();
-            ok = true;
+            String sql = "update verblijven set tijduit = now() WHERE kindId = ? and tijduit is null;";
+            PreparedStatement statement = dbConnection.prepareStatement(sql);
+            statement.setInt(1, kindId);
+            ok = statement.execute();
+            dbConnection.commit();
+
         } catch (SQLException e) {
         }
         return ok;
@@ -98,7 +98,7 @@ public class PostgresqlDb implements Database {
     }
 
     private HashMap<String, Verblijf> convertToHashmap(ResultSet result) {
-        HashMap<String, Verblijf> overzicht = null;
+        HashMap<String, Verblijf> overzicht = new HashMap<>();
         try {
             while (result.next()){
                 overzicht.put(result.getString("id"),convertToVerblijf(result));

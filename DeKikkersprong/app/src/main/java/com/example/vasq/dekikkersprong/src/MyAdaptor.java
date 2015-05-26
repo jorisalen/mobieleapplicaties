@@ -27,7 +27,7 @@ public class MyAdaptor extends BaseAdapter {
     }
 
     @Override
-    public Map.Entry<String, String> getItem(int position) {
+    public Map.Entry<String, Verblijf> getItem(int position) {
         return (Map.Entry) mData.get(position);
     }
 
@@ -46,10 +46,10 @@ public class MyAdaptor extends BaseAdapter {
             result = convertView;
         }
 
-        Map.Entry<String, String> item = getItem(position);
+        Map.Entry<String, Verblijf> item = getItem(position);
 
         ((TextView) result.findViewById(android.R.id.text1)).setText(item.getKey());
-        ((TextView) result.findViewById(android.R.id.text2)).setText(item.getValue());
+        ((TextView) result.findViewById(android.R.id.text2)).setText(item.getValue().toString());
 
         return result;
     }
